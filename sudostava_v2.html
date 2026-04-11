@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SuDostava – Brza dostava omiljenih jela</title>
+<meta name="description" content="SuDostava – Naruči iz najboljh restorana. Besplatna dostava. Plaćanje gotovinom ili karticom pri dostavi." />
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--or:#F5821F;--gr:#4CAF50;--dk:#1A1A1A;--bg:#F9F6F1;--wh:#fff;}
@@ -6,7 +12,8 @@ body{font-family:'Inter',Arial,sans-serif;background:#fff;color:var(--dk);}
 .wrap{background:#fff;min-height:100vh;}
 .page{display:none;}.page.active{display:block;}
 
-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 32px;background:#fff;border-bottom:1.5px solid #eee;gap:16px;}
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:10px 32px;background:#fff;border-bottom:1.5px solid #eee;gap:16px;position:sticky;top:0;z-index:100;}
 .nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .logo-img{width:110px;height:auto;object-fit:contain;}
 .nav-links{display:flex;gap:22px;align-items:center;}
@@ -17,6 +24,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 3
 .nav-btn{background:var(--or);color:#fff;border:none;padding:10px 20px;border-radius:24px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}
 .nav-btn:hover{background:#e07010;}
 
+/* HERO */
 .hero{background:var(--bg);padding:60px 40px 50px;display:flex;align-items:center;gap:50px;}
 .hero-text{flex:1;}
 .free-delivery-banner{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--gr);border-radius:14px;padding:12px 20px;margin-bottom:24px;max-width:440px;}
@@ -38,7 +46,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 3
 .pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;}
 .pill-or{background:#FFF0E0;color:#b85f00;}
 .pill-gr{background:#E8F5E9;color:#1b5e20;}
+.pay-badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+.pay-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f5f5;border-radius:8px;padding:6px 10px;font-size:11px;color:#555;font-weight:600;}
 
+/* STEPS */
 .section{padding:48px 40px;}
 .section-title{font-size:24px;font-weight:900;margin-bottom:4px;}
 .section-sub{font-size:14px;color:#777;margin-bottom:28px;}
@@ -50,6 +61,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 3
 .step-card h3{font-size:16px;font-weight:800;margin-bottom:6px;}
 .step-card p{font-size:13px;color:#777;line-height:1.6;}
 
+/* RESTAURANTS */
 .rests{background:var(--bg);padding:48px 40px;}
 .rest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;}
 .rest-card{background:#fff;border-radius:18px;border:1.5px solid #eee;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;}
@@ -61,6 +73,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 3
 .rest-rating{color:var(--or);font-weight:700;}
 .tag{background:#f5f5f5;padding:2px 7px;border-radius:8px;font-size:10px;color:#555;}
 
+/* PARTNER SECTION */
 .partner-section{padding:48px 40px;background:#fff;}
 .partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;}
 .partner-card{border-radius:18px;padding:32px;color:#fff;cursor:pointer;}
@@ -72,17 +85,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 3
 .partner-card.rest-p button{color:var(--or);}
 .partner-card.drv-p button{color:var(--dk);}
 
+/* FOOTER */
 footer{background:var(--dk);color:#fff;padding:40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;}
 footer h4{font-size:13px;font-weight:800;margin-bottom:12px;color:#fff;text-transform:uppercase;letter-spacing:.5px;}
-footer p,footer a{font-size:13px;color:#aaa;text-decoration:none;display:block;margin-bottom:6px;}
+footer p,footer a{font-size:13px;color:#aaa;text-decoration:none;display:block;margin-bottom:6px;cursor:pointer;}
 footer a:hover{color:var(--or);}
-.footer-brand{font-size:20px;font-weight:900;margin-bottom:6px;}
-.footer-brand span{color:var(--or);}
-.footer-logo{width:100px;margin-bottom:12px;filter:brightness(0) invert(1);}
-.footer-contact{display:flex;flex-direction:column;gap:4px;margin-top:12px;}
-.pay-badge{display:inline-flex;align-items:center;gap:6px;background:#2a2a2a;border-radius:8px;padding:6px 10px;font-size:11px;color:#ccc;margin-top:6px;margin-right:6px;}
+.footer-logo{width:110px;margin-bottom:12px;filter:brightness(0) invert(1);opacity:.85;}
 
-.page-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:#fff;border-bottom:1.5px solid #eee;}
+/* RESTAURANT PAGES */
+.page-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:#fff;border-bottom:1.5px solid #eee;position:sticky;top:0;z-index:100;}
 .page-logo{display:flex;align-items:center;gap:10px;}
 .page-logo-img{width:80px;height:auto;}
 .page-logo-info h4{font-size:14px;font-weight:800;margin:0;}
@@ -95,12 +106,13 @@ footer a:hover{color:var(--or);}
 .page-hero .pay-info{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
 .pay-pill{display:inline-flex;align-items:center;gap:4px;background:#fff;border:1.5px solid #eee;border-radius:10px;padding:4px 10px;font-size:11px;font-weight:600;}
 
-.menu-wrap{padding:24px 32px 120px;}
+/* MENU */
+.menu-wrap{padding:24px 32px 140px;}
 .menu-tabs{display:flex;gap:10px;margin-bottom:24px;overflow-x:auto;padding-bottom:4px;}
 .mtab{background:#f5f5f5;border:none;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;color:#555;}
 .mtab.active{background:var(--or);color:#fff;}
 .menu-section-title{font-size:18px;font-weight:900;margin-bottom:16px;margin-top:28px;color:var(--dk);display:flex;align-items:center;gap:8px;}
-.menu-section-title:before{content:'';display:block;width:4px;height:20px;background:var(--or);border-radius:3px;}
+.menu-section-title::before{content:'';display:block;width:4px;height:20px;background:var(--or);border-radius:3px;}
 .food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
 .food-item{background:#fff;border:1.5px solid #eee;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
 .food-photo{height:120px;display:flex;align-items:center;justify-content:center;font-size:48px;background:#fafafa;}
@@ -109,9 +121,9 @@ footer a:hover{color:var(--or);}
 .food-body p{font-size:12px;color:#888;margin-bottom:10px;flex:1;line-height:1.5;}
 .food-footer{display:flex;align-items:center;justify-content:space-between;}
 .food-price{font-size:15px;font-weight:800;color:var(--or);}
-.add-btn{background:var(--or);color:#fff;border:none;width:30px;height:30px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
+.add-btn{background:var(--or);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
 .add-btn.added{background:var(--gr);}
-.drink-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+.drink-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;}
 .drink-item{background:#fff;border:1.5px solid #eee;border-radius:14px;overflow:hidden;text-align:center;}
 .drink-photo{height:90px;display:flex;align-items:center;justify-content:center;font-size:40px;background:#fafafa;}
 .drink-body{padding:10px;}
@@ -119,51 +131,67 @@ footer a:hover{color:var(--or);}
 .drink-body p{font-size:11px;color:#888;margin-bottom:8px;}
 .drink-footer{display:flex;align-items:center;justify-content:space-between;}
 
-.cart-bar{position:sticky;bottom:0;background:var(--dk);color:#fff;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+/* CART BAR */
+.cart-bar{position:sticky;bottom:0;background:var(--dk);color:#fff;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;gap:16px;z-index:50;}
 .cart-info{display:flex;flex-direction:column;gap:2px;}
 .cart-info .cart-items{font-size:13px;color:#aaa;}
 .cart-info .cart-total{font-size:17px;font-weight:800;}
 .cart-order-btn{background:var(--or);color:#fff;border:none;padding:12px 28px;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;}
 
+/* MODALS */
 .modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
-.modal{background:#fff;border-radius:20px;padding:32px;width:90%;max-width:480px;}
+.modal{background:#fff;border-radius:20px;padding:32px;width:90%;max-width:480px;max-height:90vh;overflow-y:auto;}
 .modal h2{font-size:22px;font-weight:900;margin-bottom:8px;}
-.modal p{font-size:14px;color:#666;margin-bottom:24px;line-height:1.6;}
-.modal input,.modal textarea,.modal select{width:100%;border:1.5px solid #ddd;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:14px;outline:none;font-family:inherit;}
-.modal-btns{display:flex;gap:10px;}
+.modal p{font-size:14px;color:#666;margin-bottom:20px;line-height:1.6;}
+.modal input,.modal textarea,.modal select{width:100%;border:1.5px solid #ddd;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:12px;outline:none;font-family:inherit;color:var(--dk);}
+.modal-btns{display:flex;gap:10px;margin-top:4px;}
 .modal-submit{background:var(--or);color:#fff;border:none;padding:12px 24px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;flex:1;}
+.modal-submit:hover{background:#e07010;}
 .modal-cancel{background:#f5f5f5;color:#555;border:none;padding:12px 24px;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;}
 
+/* TOAST */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--gr);color:#fff;padding:12px 24px;border-radius:20px;font-size:14px;font-weight:700;z-index:2000;opacity:0;transition:opacity .3s;pointer-events:none;}
+.toast.show{opacity:1;}
+
+/* MOBILE */
 @media(max-width:768px){
-nav{padding:10px 16px;}
-.nav-links{display:none;}
-.logo-img{width:80px;}
-.free-badge{font-size:10px;padding:4px 8px;}
-.hero{flex-direction:column;padding:32px 20px 28px;gap:24px;}
-.hero h1{font-size:28px;}
-.hero-img{display:none;}
-.section,.rests,.partner-section{padding:32px 20px;}
-.steps{grid-template-columns:1fr;}
-.partner-grid{grid-template-columns:1fr;}
-footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
-.menu-wrap{padding:20px 16px 120px;}
-.food-grid{grid-template-columns:1fr 1fr;}
-.page-hero{flex-direction:column;align-items:flex-start;padding:20px 20px 16px;}
-.cart-bar{padding:12px 16px;}
+  nav{padding:10px 16px;}
+  .nav-links{display:none;}
+  .logo-img{width:90px;}
+  .free-badge{font-size:10px;padding:4px 8px;}
+  .hero{flex-direction:column;padding:32px 20px 28px;gap:24px;}
+  .hero h1{font-size:28px;}
+  .hero-img{display:none;}
+  .search-bar{max-width:100%;}
+  .section,.rests,.partner-section{padding:32px 20px;}
+  .steps{grid-template-columns:1fr;}
+  .partner-grid{grid-template-columns:1fr;}
+  footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
+  .menu-wrap{padding:20px 16px 140px;}
+  .food-grid{grid-template-columns:1fr 1fr;}
+  .drink-grid{grid-template-columns:1fr 1fr;}
+  .page-hero{flex-direction:column;align-items:flex-start;padding:20px 20px 16px;}
+  .page-hero-icon{font-size:40px;}
+  .page-hero h1{font-size:22px;}
+  .cart-bar{padding:12px 16px;}
+  .menu-wrap{padding:16px 16px 140px;}
+  .modal{padding:24px 20px;}
+}
+@media(max-width:400px){
+  .food-grid{grid-template-columns:1fr;}
+  .drink-grid{grid-template-columns:1fr 1fr;}
 }
 </style>
-
+</head>
+<body>
 <div class="wrap">
 
+<!-- ===== HOME PAGE ===== -->
 <div id="home" class="page active">
 <nav>
   <div class="nav-logo">
-    <img src="/mnt/user-data/uploads/newlogo.png" class="logo-img" alt="SuDostava" onerror="this.style.display='none';this.nextSibling.style.display='flex'" />
-    <div style="display:none;align-items:center;gap:8px;">
-      <div style="width:38px;height:38px;background:var(--or);border-radius:10px;display:flex;align-items:center;justify-content:center;"><span style="color:#fff;font-size:18px;font-weight:900;">S</span></div>
-      <div><div style="font-size:18px;font-weight:900;"><span style="color:var(--or);">Su</span>Dostava</div><div style="font-size:9px;color:#888;letter-spacing:1.5px;text-transform:uppercase;">Brza dostava omiljenih jela</div></div>
-    </div>
+    <img src="newlogo.png" class="logo-img" alt="SuDostava" />
   </div>
   <div class="nav-links">
     <a onclick="openPage('home')">Početna</a>
@@ -192,9 +220,10 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
       <input type="text" placeholder="Unesi svoju adresu..." />
       <button onclick="scrollToRests()">Pronađi</button>
     </div>
-    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
-      <div class="pay-badge">💵 Plaćanje gotovinom pri dostavi</div>
+    <div class="pay-badges">
+      <div class="pay-badge">💵 Gotovina pri dostavi</div>
       <div class="pay-badge">💳 Kartica kod vozača</div>
+      <div class="pay-badge">📞 069 081 5197</div>
     </div>
   </div>
   <div class="hero-img">
@@ -225,26 +254,11 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
   <div class="section-title">Naši restorani</div>
   <div class="section-sub">Klikni na restoran i pogledaj meni</div>
   <div class="rest-grid">
-    <div class="rest-card" onclick="openPage('pingvin')">
-      <div class="rest-img" style="background:#FFF8E1;">🥙</div>
-      <div class="rest-info"><h4>Pingvin Gyros</h4><div class="rest-meta"><span class="rest-rating">★ 4.8</span><span>25–35 min</span><span class="tag">Grčka hrana</span></div></div>
-    </div>
-    <div class="rest-card" onclick="openPage('walter')">
-      <div class="rest-img" style="background:#FCE4EC;">🥩</div>
-      <div class="rest-info"><h4>Walter</h4><div class="rest-meta"><span class="rest-rating">★ 4.7</span><span>30–40 min</span><span class="tag">Roštilj</span></div></div>
-    </div>
-    <div class="rest-card" onclick="openPage('pizzaking')">
-      <div class="rest-img" style="background:#FFF3E0;">🍕</div>
-      <div class="rest-info"><h4>Pizza King</h4><div class="rest-meta"><span class="rest-rating">★ 4.9</span><span>20–30 min</span><span class="tag">Pizza</span></div></div>
-    </div>
-    <div class="rest-card" onclick="openPage('langos')">
-      <div class="rest-img" style="background:#E8F5E9;">🧆</div>
-      <div class="rest-info"><h4>Langos House</h4><div class="rest-meta"><span class="rest-rating">★ 4.6</span><span>15–25 min</span><span class="tag">Brza hrana</span></div></div>
-    </div>
-    <div class="rest-card" onclick="openPage('grillspot')">
-      <div class="rest-img" style="background:#F3E5F5;">🔥</div>
-      <div class="rest-info"><h4>Grill Spot</h4><div class="rest-meta"><span class="rest-rating">★ 4.8</span><span>25–35 min</span><span class="tag">Roštilj</span></div></div>
-    </div>
+    <div class="rest-card" onclick="openPage('pingvin')"><div class="rest-img" style="background:#FFF8E1;">🥙</div><div class="rest-info"><h4>Pingvin Gyros</h4><div class="rest-meta"><span class="rest-rating">★ 4.8</span><span>25–35 min</span><span class="tag">Grčka hrana</span></div></div></div>
+    <div class="rest-card" onclick="openPage('walter')"><div class="rest-img" style="background:#FCE4EC;">🥩</div><div class="rest-info"><h4>Walter</h4><div class="rest-meta"><span class="rest-rating">★ 4.7</span><span>30–40 min</span><span class="tag">Roštilj</span></div></div></div>
+    <div class="rest-card" onclick="openPage('pizzaking')"><div class="rest-img" style="background:#FFF3E0;">🍕</div><div class="rest-info"><h4>Pizza King</h4><div class="rest-meta"><span class="rest-rating">★ 4.9</span><span>20–30 min</span><span class="tag">Pizza</span></div></div></div>
+    <div class="rest-card" onclick="openPage('langos')"><div class="rest-img" style="background:#E8F5E9;">🧆</div><div class="rest-info"><h4>Langos House</h4><div class="rest-meta"><span class="rest-rating">★ 4.6</span><span>15–25 min</span><span class="tag">Brza hrana</span></div></div></div>
+    <div class="rest-card" onclick="openPage('grillspot')"><div class="rest-img" style="background:#F3E5F5;">🔥</div><div class="rest-info"><h4>Grill Spot</h4><div class="rest-meta"><span class="rest-rating">★ 4.8</span><span>25–35 min</span><span class="tag">Roštilj</span></div></div></div>
   </div>
 </div>
 
@@ -252,33 +266,23 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
   <div class="section-title">Pridruži nam se</div>
   <div class="section-sub">Postani deo SuDostava tima</div>
   <div class="partner-grid">
-    <div class="partner-card rest-p">
-      <div style="font-size:36px;margin-bottom:12px;">🍽️</div>
-      <h3>Postani partner restoran</h3>
-      <p>Povećaj prodaju i dođi do novih mušterija uz našu platformu. Brzo i jednostavno.</p>
-      <button onclick="openModal('partner')">Prijavi restoran →</button>
-    </div>
-    <div class="partner-card drv-p">
-      <div style="font-size:36px;margin-bottom:12px;">🛵</div>
-      <h3>Postani vozač dostavljač</h3>
-      <p>Zarađuj vozeCi uz fleksibilno radno vreme. Prijavi se i počni odmah.</p>
-      <button onclick="openModal('driver')">Postani vozač →</button>
-    </div>
+    <div class="partner-card rest-p"><div style="font-size:36px;margin-bottom:12px;">🍽️</div><h3>Postani partner restoran</h3><p>Povećaj prodaju i dođi do novih mušterija uz našu platformu. Brzo i jednostavno.</p><button onclick="openModal('partner')">Prijavi restoran →</button></div>
+    <div class="partner-card drv-p"><div style="font-size:36px;margin-bottom:12px;">🛵</div><h3>Postani vozač dostavljač</h3><p>Zarađuj uz fleksibilno radno vreme. Prijavi se i počni odmah!</p><button onclick="openModal('driver')">Postani vozač →</button></div>
   </div>
 </div>
 
 <footer>
   <div>
-    <img src="/mnt/user-data/uploads/newlogo.png" class="footer-logo" alt="SuDostava" onerror="this.outerHTML='<div class=\'footer-brand\'><span>Su</span>Dostava</div>'" />
+    <img src="newlogo.png" class="footer-logo" alt="SuDostava" />
     <p>Brza dostava omiljenih jela direktno na tvoja vrata. Dostupno svakog dana.</p>
-    <div class="footer-contact">
+    <div style="margin-top:12px;">
       <p>📞 069 081 5197</p>
       <p>📧 info@sudostava.online</p>
       <p>🌐 sudostava.online</p>
     </div>
-    <div style="margin-top:12px;">
-      <span class="pay-badge">💵 Gotovina pri dostavi</span>
-      <span class="pay-badge">💳 Kartica kod vozača</span>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+      <span style="background:#2a2a2a;border-radius:8px;padding:5px 10px;font-size:11px;color:#ccc;">💵 Gotovina pri dostavi</span>
+      <span style="background:#2a2a2a;border-radius:8px;padding:5px 10px;font-size:11px;color:#ccc;">💳 Kartica kod vozača</span>
     </div>
   </div>
   <div>
@@ -300,10 +304,11 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
 </footer>
 </div>
 
+<!-- ===== PINGVIN GYROS ===== -->
 <div id="pingvin" class="page">
   <div class="page-nav">
     <div class="page-logo">
-      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
+      <img src="newlogo.png" class="page-logo-img" alt="SuDostava" />
       <div class="page-logo-info"><h4>Pingvin Gyros</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
     </div>
     <button class="back-btn" onclick="openPage('home')">← Nazad</button>
@@ -314,10 +319,7 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
       <h1>Pingvin Gyros</h1>
       <p>⭐ 4.8 &nbsp;·&nbsp; 25–35 min &nbsp;·&nbsp; Grčka hrana</p>
       <div class="pay-info">
-        <span class="pay-pill">💵 Gotovina</span>
-        <span class="pay-pill">💳 Kartica kod vozača</span>
-        <span class="pay-pill">🎉 Besplatna dostava</span>
-        <span class="pay-pill">📞 069 081 5197</span>
+        <span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span>
       </div>
     </div>
   </div>
@@ -355,30 +357,18 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
       </div>
     </div>
   </div>
-  <div class="cart-bar" id="cart-pingvin">
-    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total" id="ct-pingvin"></span></div>
-    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
-  </div>
+  <div class="cart-bar"><div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div><button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button></div>
 </div>
 
+<!-- ===== WALTER ===== -->
 <div id="walter" class="page">
   <div class="page-nav">
-    <div class="page-logo">
-      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
-      <div class="page-logo-info"><h4>Walter</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
-    </div>
+    <div class="page-logo"><img src="newlogo.png" class="page-logo-img" alt="SuDostava" /><div class="page-logo-info"><h4>Walter</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div></div>
     <button class="back-btn" onclick="openPage('home')">← Nazad</button>
   </div>
-  <div class="page-hero">
-    <div class="page-hero-icon">🥩</div>
-    <div><h1>Walter</h1><p>⭐ 4.7 &nbsp;·&nbsp; 30–40 min &nbsp;·&nbsp; Roštilj</p>
-    <div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div>
-  </div>
+  <div class="page-hero"><div class="page-hero-icon">🥩</div><div><h1>Walter</h1><p>⭐ 4.7 &nbsp;·&nbsp; 30–40 min &nbsp;·&nbsp; Roštilj</p><div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div></div>
   <div class="menu-wrap">
-    <div class="menu-tabs">
-      <button class="mtab active" onclick="switchTab(this,'tab-walter-food')">🍽️ Hrana</button>
-      <button class="mtab" onclick="switchTab(this,'tab-walter-drinks')">🥤 Pića</button>
-    </div>
+    <div class="menu-tabs"><button class="mtab active" onclick="switchTab(this,'tab-walter-food')">🍽️ Hrana</button><button class="mtab" onclick="switchTab(this,'tab-walter-drinks')">🥤 Pića</button></div>
     <div id="tab-walter-food">
       <div class="menu-section-title">Roštilj</div>
       <div class="food-grid">
@@ -408,30 +398,18 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
       </div>
     </div>
   </div>
-  <div class="cart-bar">
-    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total" id="ct-walter"></span></div>
-    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
-  </div>
+  <div class="cart-bar"><div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div><button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button></div>
 </div>
 
+<!-- ===== PIZZA KING ===== -->
 <div id="pizzaking" class="page">
   <div class="page-nav">
-    <div class="page-logo">
-      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
-      <div class="page-logo-info"><h4>Pizza King</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
-    </div>
+    <div class="page-logo"><img src="newlogo.png" class="page-logo-img" alt="SuDostava" /><div class="page-logo-info"><h4>Pizza King</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div></div>
     <button class="back-btn" onclick="openPage('home')">← Nazad</button>
   </div>
-  <div class="page-hero">
-    <div class="page-hero-icon">🍕</div>
-    <div><h1>Pizza King</h1><p>⭐ 4.9 &nbsp;·&nbsp; 20–30 min &nbsp;·&nbsp; Pizza</p>
-    <div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div>
-  </div>
+  <div class="page-hero"><div class="page-hero-icon">🍕</div><div><h1>Pizza King</h1><p>⭐ 4.9 &nbsp;·&nbsp; 20–30 min &nbsp;·&nbsp; Pizza</p><div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div></div>
   <div class="menu-wrap">
-    <div class="menu-tabs">
-      <button class="mtab active" onclick="switchTab(this,'tab-pizza-food')">🍽️ Hrana</button>
-      <button class="mtab" onclick="switchTab(this,'tab-pizza-drinks')">🥤 Pića</button>
-    </div>
+    <div class="menu-tabs"><button class="mtab active" onclick="switchTab(this,'tab-pizza-food')">🍽️ Hrana</button><button class="mtab" onclick="switchTab(this,'tab-pizza-drinks')">🥤 Pića</button></div>
     <div id="tab-pizza-food">
       <div class="menu-section-title">Pizze</div>
       <div class="food-grid">
@@ -461,30 +439,18 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
       </div>
     </div>
   </div>
-  <div class="cart-bar">
-    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div>
-    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
-  </div>
+  <div class="cart-bar"><div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div><button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button></div>
 </div>
 
+<!-- ===== LANGOS HOUSE ===== -->
 <div id="langos" class="page">
   <div class="page-nav">
-    <div class="page-logo">
-      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
-      <div class="page-logo-info"><h4>Langos House</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
-    </div>
+    <div class="page-logo"><img src="newlogo.png" class="page-logo-img" alt="SuDostava" /><div class="page-logo-info"><h4>Langos House</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div></div>
     <button class="back-btn" onclick="openPage('home')">← Nazad</button>
   </div>
-  <div class="page-hero">
-    <div class="page-hero-icon">🧆</div>
-    <div><h1>Langos House</h1><p>⭐ 4.6 &nbsp;·&nbsp; 15–25 min &nbsp;·&nbsp; Brza hrana</p>
-    <div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div>
-  </div>
+  <div class="page-hero"><div class="page-hero-icon">🧆</div><div><h1>Langos House</h1><p>⭐ 4.6 &nbsp;·&nbsp; 15–25 min &nbsp;·&nbsp; Brza hrana</p><div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div></div>
   <div class="menu-wrap">
-    <div class="menu-tabs">
-      <button class="mtab active" onclick="switchTab(this,'tab-langos-food')">🍽️ Hrana</button>
-      <button class="mtab" onclick="switchTab(this,'tab-langos-drinks')">🥤 Pića</button>
-    </div>
+    <div class="menu-tabs"><button class="mtab active" onclick="switchTab(this,'tab-langos-food')">🍽️ Hrana</button><button class="mtab" onclick="switchTab(this,'tab-langos-drinks')">🥤 Pića</button></div>
     <div id="tab-langos-food">
       <div class="menu-section-title">Langosi</div>
       <div class="food-grid">
@@ -514,32 +480,20 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
       </div>
     </div>
   </div>
-  <div class="cart-bar">
-    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div>
-    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
-  </div>
+  <div class="cart-bar"><div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div><button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button></div>
 </div>
 
+<!-- ===== GRILL SPOT ===== -->
 <div id="grillspot" class="page">
   <div class="page-nav">
-    <div class="page-logo">
-      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
-      <div class="page-logo-info"><h4>Grill Spot</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
-    </div>
+    <div class="page-logo"><img src="newlogo.png" class="page-logo-img" alt="SuDostava" /><div class="page-logo-info"><h4>Grill Spot</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div></div>
     <button class="back-btn" onclick="openPage('home')">← Nazad</button>
   </div>
-  <div class="page-hero">
-    <div class="page-hero-icon">🔥</div>
-    <div><h1>Grill Spot</h1><p>⭐ 4.8 &nbsp;·&nbsp; 25–35 min &nbsp;·&nbsp; Roštilj</p>
-    <div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div>
-  </div>
+  <div class="page-hero"><div class="page-hero-icon">🔥</div><div><h1>Grill Spot</h1><p>⭐ 4.8 &nbsp;·&nbsp; 25–35 min &nbsp;·&nbsp; Roštilj</p><div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div></div>
   <div class="menu-wrap">
-    <div class="menu-tabs">
-      <button class="mtab active" onclick="switchTab(this,'tab-grill-food')">🍽️ Hrana</button>
-      <button class="mtab" onclick="switchTab(this,'tab-grill-drinks')">🥤 Pića</button>
-    </div>
+    <div class="menu-tabs"><button class="mtab active" onclick="switchTab(this,'tab-grill-food')">🍽️ Hrana</button><button class="mtab" onclick="switchTab(this,'tab-grill-drinks')">🥤 Pića</button></div>
     <div id="tab-grill-food">
-      <div class="menu-section-title">Burgeri & Roštilj</div>
+      <div class="menu-section-title">Burgeri &amp; Roštilj</div>
       <div class="food-grid">
         <div class="food-item"><div class="food-photo">🍔</div><div class="food-body"><h4>Burger klasik</h4><p>Juneće meso, sir, salata, paradajz</p><div class="food-footer"><span class="food-price">720 RSD</span><button class="add-btn" onclick="addToCart(this,'Burger klasik',720)">+</button></div></div></div>
         <div class="food-item"><div class="food-photo">🍔</div><div class="food-body"><h4>Double Smash</h4><p>Dupla pljeskavica, bacon, sos</p><div class="food-footer"><span class="food-price">920 RSD</span><button class="add-btn" onclick="addToCart(this,'Double Smash',920)">+</button></div></div></div>
@@ -567,12 +521,10 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
       </div>
     </div>
   </div>
-  <div class="cart-bar">
-    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div>
-    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
-  </div>
+  <div class="cart-bar"><div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div><button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button></div>
 </div>
 
+<!-- ===== MODALS ===== -->
 <div class="modal-overlay" id="modal-partner">
   <div class="modal">
     <h2>🍽️ Prijavi restoran</h2>
@@ -596,7 +548,7 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
     <input type="text" placeholder="Ime i prezime" />
     <input type="tel" placeholder="Telefon" />
     <input type="text" placeholder="Grad" />
-    <select><option>Izaberi vozilo</option><option>Skuter/Motor</option><option>Bicikl</option><option>Auto</option></select>
+    <select><option>Izaberi vozilo</option><option>Skuter / Motor</option><option>Bicikl</option><option>Auto</option></select>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeModal('driver')">Otkaži</button>
       <button class="modal-submit">Prijavi se ✓</button>
@@ -609,61 +561,84 @@ footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
     <h2>🛵 Potvrdi narudžbinu</h2>
     <p>Upiši adresu dostave. Plaćanje gotovinom ili karticom pri dostavi.</p>
     <input type="text" placeholder="Ime i prezime" />
-    <input type="tel" placeholder="Telefon: 069 081 5197" />
+    <input type="tel" placeholder="Broj telefona" />
     <input type="text" placeholder="Adresa dostave" />
     <select><option>💵 Gotovina pri dostavi</option><option>💳 Kartica kod vozača</option></select>
     <textarea placeholder="Napomena za dostavljača..." rows="2" style="resize:none;"></textarea>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeModal('order')">Otkaži</button>
-      <button class="modal-submit" onclick="closeModal('order')">Naruči sada 🎉</button>
+      <button class="modal-submit" onclick="submitOrder()">Naruči sada 🎉</button>
     </div>
   </div>
 </div>
 
+<div class="toast" id="toast">Narudžbina poslata! Hvala 🎉</div>
+
 </div>
 
 <script>
-var cart={items:0,total:0};
-function openPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  var pg=document.getElementById(id);
-  if(pg){pg.classList.add('active');window.scrollTo(0,0);}
-  cart={items:0,total:0};
+var cart = {items:0, total:0};
+
+function openPage(id) {
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var pg = document.getElementById(id);
+  if (pg) { pg.classList.add('active'); window.scrollTo(0,0); }
+  cart = {items:0, total:0};
 }
-function scrollToRests(){
+
+function scrollToRests() {
   openPage('home');
-  setTimeout(function(){var el=document.getElementById('restorani');if(el)el.scrollIntoView({behavior:'smooth'});},100);
+  setTimeout(function(){
+    var el = document.getElementById('restorani');
+    if (el) el.scrollIntoView({behavior:'smooth'});
+  }, 100);
 }
-function switchTab(btn,tabId){
-  var wrap=btn.closest('.menu-wrap');
-  wrap.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
+
+function switchTab(btn, tabId) {
+  var wrap = btn.closest('.menu-wrap');
+  wrap.querySelectorAll('.mtab').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
-  var pg=btn.closest('.page');
-  pg.querySelectorAll('[id^="tab-"]').forEach(t=>t.style.display='none');
-  var t=document.getElementById(tabId);
-  if(t)t.style.display='block';
+  var pg = btn.closest('.page');
+  pg.querySelectorAll('[id^="tab-"]').forEach(function(t){t.style.display='none';});
+  var t = document.getElementById(tabId);
+  if (t) t.style.display = 'block';
 }
-function addToCart(btn,name,price){
+
+function addToCart(btn, name, price) {
   cart.items++;
-  cart.total+=price;
-  var pg=btn.closest('.page');
-  var ci=pg.querySelector('.cart-items');
-  var ct=pg.querySelector('.cart-total');
-  if(ci)ci.textContent=cart.items+(cart.items===1?' stavka':' stavki')+' u korpi';
-  if(ct)ct.textContent='Ukupno: '+cart.total.toLocaleString()+' RSD';
+  cart.total += price;
+  var pg = btn.closest('.page');
+  var ci = pg.querySelector('.cart-items');
+  var ct = pg.querySelector('.cart-total');
+  if (ci) ci.textContent = cart.items + (cart.items === 1 ? ' stavka' : cart.items < 5 ? ' stavke' : ' stavki') + ' u korpi';
+  if (ct) ct.textContent = 'Ukupno: ' + cart.total.toLocaleString('sr-RS') + ' RSD';
   btn.classList.add('added');
-  btn.textContent='✓';
-  setTimeout(function(){btn.classList.remove('added');btn.textContent='+';},900);
+  btn.textContent = '✓';
+  setTimeout(function(){ btn.classList.remove('added'); btn.textContent = '+'; }, 900);
 }
-function openModal(type){
-  var m=document.getElementById('modal-'+type);
-  if(m)m.classList.add('open');
+
+function openModal(type) {
+  var m = document.getElementById('modal-' + type);
+  if (m) m.classList.add('open');
 }
-function closeModal(type){
-  var m=document.getElementById('modal-'+type);
-  if(m)m.classList.remove('open');
+
+function closeModal(type) {
+  var m = document.getElementById('modal-' + type);
+  if (m) m.classList.remove('open');
 }
+
+function submitOrder() {
+  closeModal('order');
+  var t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3000);
+}
+
 document.querySelectorAll('.modal-overlay').forEach(function(m){
-  m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('open');});
+  m.addEventListener('click', function(e){
+    if (e.target === m) m.classList.remove('open');
+  });
 });
 </script>
+</body>
+</html>
