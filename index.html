@@ -25,7 +25,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 3
 .nav-btn:hover{background:#e07010;}
 
 /* HERO */
-.hero{background:var(--bg);padding:60px 40px 50px;display:flex;align-items:center;gap:50px;}
+.hero{background:var(--bg);padding:60px 40px 50px;display:flex;align-items:center;gap:30px;}
 .hero-text{flex:1;}
 .free-delivery-banner{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--gr);border-radius:14px;padding:12px 20px;margin-bottom:24px;max-width:440px;}
 .fdb-icon{font-size:28px;}
@@ -37,8 +37,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 3
 .search-bar{display:flex;background:#fff;border:2px solid #eee;border-radius:50px;overflow:hidden;max-width:460px;}
 .search-bar input{flex:1;border:none;padding:13px 20px;font-size:14px;outline:none;background:transparent;color:var(--dk);}
 .search-bar button{background:var(--or);color:#fff;border:none;padding:11px 24px;font-size:14px;font-weight:700;cursor:pointer;border-radius:0 48px 48px 0;}
-.hero-img{flex:0 0 300px;display:flex;justify-content:center;}
-.hero-visual{width:270px;background:#fff;border-radius:22px;border:2px solid #eee;padding:24px;text-align:center;}
+.hero-img{flex:0 0 260px;display:flex;justify-content:center;}
+.hero-visual{width:240px;background:#fff;border-radius:22px;border:2px solid #eee;padding:24px;text-align:center;}
 .hero-visual .big-icon{font-size:64px;margin-bottom:10px;}
 .hero-visual strong{font-size:16px;font-weight:800;color:var(--dk);}
 .hero-visual p{font-size:12px;color:#888;margin-top:4px;}
@@ -48,6 +48,13 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 3
 .pill-gr{background:#E8F5E9;color:#1b5e20;}
 .pay-badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
 .pay-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f5f5;border-radius:8px;padding:6px 10px;font-size:11px;color:#555;font-weight:600;}
+
+/* PROMO IMAGE TRAY */
+.hero-promo{flex:0 0 300px;display:flex;align-items:center;justify-content:center;}
+.promo-img-wrap{width:300px;height:300px;border-radius:22px;overflow:hidden;border:2px solid #eee;background:#f5f5f5;}
+.promo-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+@media(max-width:1100px){.hero-promo{flex:0 0 260px;}.promo-img-wrap{width:260px;height:260px;}}
+@media(max-width:900px){.hero-promo{display:none;}}
 
 /* STEPS */
 .section{padding:48px 40px;}
@@ -226,6 +233,14 @@ footer a:hover{color:var(--or);}
       <div class="pay-badge">📞 069 081 5197</div>
     </div>
   </div>
+
+  <!-- PROMO IMAGE — upload any square image to GitHub as "promo.jpg" to update -->
+  <div class="hero-promo">
+    <div class="promo-img-wrap">
+      <img src="promo.jpg" alt="Promocija" />
+    </div>
+  </div>
+
   <div class="hero-img">
     <div class="hero-visual">
       <div class="big-icon">🛵</div>
@@ -277,7 +292,7 @@ footer a:hover{color:var(--or);}
     <p>Brza dostava omiljenih jela direktno na tvoja vrata. Dostupno svakog dana.</p>
     <div style="margin-top:12px;">
       <p>📞 069 081 5197</p>
-      <p>📧 info@sudostava.online</p>
+      <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2d44434b426d5e5849425e594c5b4c03424341444348">[email&#160;protected]</a></p>
       <p>🌐 sudostava.online</p>
     </div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
@@ -576,7 +591,7 @@ footer a:hover{color:var(--or);}
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var cart = {items:0, total:0};
 
 function openPage(id) {
@@ -631,14 +646,4 @@ function submitOrder() {
   closeModal('order');
   var t = document.getElementById('toast');
   t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 3000);
-}
-
-document.querySelectorAll('.modal-overlay').forEach(function(m){
-  m.addEventListener('click', function(e){
-    if (e.target === m) m.classList.remove('open');
-  });
-});
-</script>
-</body>
-</html>
+  setTimeout(function(){ t.cla
