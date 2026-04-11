@@ -1,0 +1,669 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--or:#F5821F;--gr:#4CAF50;--dk:#1A1A1A;--bg:#F9F6F1;--wh:#fff;}
+body{font-family:'Inter',Arial,sans-serif;background:#fff;color:var(--dk);}
+.wrap{background:#fff;min-height:100vh;}
+.page{display:none;}.page.active{display:block;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:10px 32px;background:#fff;border-bottom:1.5px solid #eee;gap:16px;}
+.nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.logo-img{width:110px;height:auto;object-fit:contain;}
+.nav-links{display:flex;gap:22px;align-items:center;}
+.nav-links a{text-decoration:none;color:var(--dk);font-size:14px;font-weight:500;cursor:pointer;}
+.nav-links a:hover{color:var(--or);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.free-badge{background:#E8F5E9;color:#2E7D32;font-size:12px;font-weight:700;padding:6px 12px;border-radius:20px;white-space:nowrap;}
+.nav-btn{background:var(--or);color:#fff;border:none;padding:10px 20px;border-radius:24px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.nav-btn:hover{background:#e07010;}
+
+.hero{background:var(--bg);padding:60px 40px 50px;display:flex;align-items:center;gap:50px;}
+.hero-text{flex:1;}
+.free-delivery-banner{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--gr);border-radius:14px;padding:12px 20px;margin-bottom:24px;max-width:440px;}
+.fdb-icon{font-size:28px;}
+.fdb-text strong{display:block;font-size:15px;font-weight:800;color:#2E7D32;}
+.fdb-text span{font-size:12px;color:#555;}
+.hero h1{font-size:42px;font-weight:900;line-height:1.15;color:var(--dk);margin-bottom:14px;}
+.hero h1 em{color:var(--or);font-style:normal;}
+.hero p{font-size:16px;color:#555;line-height:1.65;margin-bottom:26px;max-width:460px;}
+.search-bar{display:flex;background:#fff;border:2px solid #eee;border-radius:50px;overflow:hidden;max-width:460px;}
+.search-bar input{flex:1;border:none;padding:13px 20px;font-size:14px;outline:none;background:transparent;color:var(--dk);}
+.search-bar button{background:var(--or);color:#fff;border:none;padding:11px 24px;font-size:14px;font-weight:700;cursor:pointer;border-radius:0 48px 48px 0;}
+.hero-img{flex:0 0 300px;display:flex;justify-content:center;}
+.hero-visual{width:270px;background:#fff;border-radius:22px;border:2px solid #eee;padding:24px;text-align:center;}
+.hero-visual .big-icon{font-size:64px;margin-bottom:10px;}
+.hero-visual strong{font-size:16px;font-weight:800;color:var(--dk);}
+.hero-visual p{font-size:12px;color:#888;margin-top:4px;}
+.hero-pills{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
+.pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;}
+.pill-or{background:#FFF0E0;color:#b85f00;}
+.pill-gr{background:#E8F5E9;color:#1b5e20;}
+
+.section{padding:48px 40px;}
+.section-title{font-size:24px;font-weight:900;margin-bottom:4px;}
+.section-sub{font-size:14px;color:#777;margin-bottom:28px;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.step-card{background:#fff;border:1.5px solid #eee;border-radius:18px;padding:28px 24px;position:relative;overflow:hidden;}
+.step-num{position:absolute;top:14px;right:16px;font-size:52px;font-weight:900;color:var(--or);opacity:0.12;line-height:1;}
+.step-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;}
+.ic-or{background:#FFF0E0;}.ic-gr{background:#E8F5E9;}
+.step-card h3{font-size:16px;font-weight:800;margin-bottom:6px;}
+.step-card p{font-size:13px;color:#777;line-height:1.6;}
+
+.rests{background:var(--bg);padding:48px 40px;}
+.rest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;}
+.rest-card{background:#fff;border-radius:18px;border:1.5px solid #eee;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;}
+.rest-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.rest-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:48px;}
+.rest-info{padding:12px 14px;}
+.rest-info h4{font-size:14px;font-weight:800;margin-bottom:5px;}
+.rest-meta{display:flex;gap:8px;font-size:11px;color:#888;flex-wrap:wrap;}
+.rest-rating{color:var(--or);font-weight:700;}
+.tag{background:#f5f5f5;padding:2px 7px;border-radius:8px;font-size:10px;color:#555;}
+
+.partner-section{padding:48px 40px;background:#fff;}
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;}
+.partner-card{border-radius:18px;padding:32px;color:#fff;cursor:pointer;}
+.partner-card.rest-p{background:var(--or);}
+.partner-card.drv-p{background:var(--dk);}
+.partner-card h3{font-size:20px;font-weight:900;margin-bottom:8px;}
+.partner-card p{font-size:13px;opacity:.85;margin-bottom:18px;line-height:1.5;}
+.partner-card button{background:#fff;border:none;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;}
+.partner-card.rest-p button{color:var(--or);}
+.partner-card.drv-p button{color:var(--dk);}
+
+footer{background:var(--dk);color:#fff;padding:40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;}
+footer h4{font-size:13px;font-weight:800;margin-bottom:12px;color:#fff;text-transform:uppercase;letter-spacing:.5px;}
+footer p,footer a{font-size:13px;color:#aaa;text-decoration:none;display:block;margin-bottom:6px;}
+footer a:hover{color:var(--or);}
+.footer-brand{font-size:20px;font-weight:900;margin-bottom:6px;}
+.footer-brand span{color:var(--or);}
+.footer-logo{width:100px;margin-bottom:12px;filter:brightness(0) invert(1);}
+.footer-contact{display:flex;flex-direction:column;gap:4px;margin-top:12px;}
+.pay-badge{display:inline-flex;align-items:center;gap:6px;background:#2a2a2a;border-radius:8px;padding:6px 10px;font-size:11px;color:#ccc;margin-top:6px;margin-right:6px;}
+
+.page-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:#fff;border-bottom:1.5px solid #eee;}
+.page-logo{display:flex;align-items:center;gap:10px;}
+.page-logo-img{width:80px;height:auto;}
+.page-logo-info h4{font-size:14px;font-weight:800;margin:0;}
+.page-logo-info p{font-size:11px;color:#888;margin:0;}
+.back-btn{background:var(--or);color:#fff;border:none;padding:9px 18px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;}
+.page-hero{background:var(--bg);padding:28px 32px 20px;display:flex;align-items:center;gap:20px;}
+.page-hero-icon{font-size:56px;flex-shrink:0;}
+.page-hero h1{font-size:28px;font-weight:900;margin-bottom:4px;}
+.page-hero p{font-size:13px;color:#666;}
+.page-hero .pay-info{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
+.pay-pill{display:inline-flex;align-items:center;gap:4px;background:#fff;border:1.5px solid #eee;border-radius:10px;padding:4px 10px;font-size:11px;font-weight:600;}
+
+.menu-wrap{padding:24px 32px 120px;}
+.menu-tabs{display:flex;gap:10px;margin-bottom:24px;overflow-x:auto;padding-bottom:4px;}
+.mtab{background:#f5f5f5;border:none;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;color:#555;}
+.mtab.active{background:var(--or);color:#fff;}
+.menu-section-title{font-size:18px;font-weight:900;margin-bottom:16px;margin-top:28px;color:var(--dk);display:flex;align-items:center;gap:8px;}
+.menu-section-title:before{content:'';display:block;width:4px;height:20px;background:var(--or);border-radius:3px;}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
+.food-item{background:#fff;border:1.5px solid #eee;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+.food-photo{height:120px;display:flex;align-items:center;justify-content:center;font-size:48px;background:#fafafa;}
+.food-body{padding:12px;flex:1;display:flex;flex-direction:column;}
+.food-body h4{font-size:14px;font-weight:700;margin-bottom:4px;}
+.food-body p{font-size:12px;color:#888;margin-bottom:10px;flex:1;line-height:1.5;}
+.food-footer{display:flex;align-items:center;justify-content:space-between;}
+.food-price{font-size:15px;font-weight:800;color:var(--or);}
+.add-btn{background:var(--or);color:#fff;border:none;width:30px;height:30px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
+.add-btn.added{background:var(--gr);}
+.drink-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+.drink-item{background:#fff;border:1.5px solid #eee;border-radius:14px;overflow:hidden;text-align:center;}
+.drink-photo{height:90px;display:flex;align-items:center;justify-content:center;font-size:40px;background:#fafafa;}
+.drink-body{padding:10px;}
+.drink-body h4{font-size:13px;font-weight:700;margin-bottom:2px;}
+.drink-body p{font-size:11px;color:#888;margin-bottom:8px;}
+.drink-footer{display:flex;align-items:center;justify-content:space-between;}
+
+.cart-bar{position:sticky;bottom:0;background:var(--dk);color:#fff;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.cart-info{display:flex;flex-direction:column;gap:2px;}
+.cart-info .cart-items{font-size:13px;color:#aaa;}
+.cart-info .cart-total{font-size:17px;font-weight:800;}
+.cart-order-btn{background:var(--or);color:#fff;border:none;padding:12px 28px;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;}
+
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;border-radius:20px;padding:32px;width:90%;max-width:480px;}
+.modal h2{font-size:22px;font-weight:900;margin-bottom:8px;}
+.modal p{font-size:14px;color:#666;margin-bottom:24px;line-height:1.6;}
+.modal input,.modal textarea,.modal select{width:100%;border:1.5px solid #ddd;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:14px;outline:none;font-family:inherit;}
+.modal-btns{display:flex;gap:10px;}
+.modal-submit{background:var(--or);color:#fff;border:none;padding:12px 24px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;flex:1;}
+.modal-cancel{background:#f5f5f5;color:#555;border:none;padding:12px 24px;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;}
+
+@media(max-width:768px){
+nav{padding:10px 16px;}
+.nav-links{display:none;}
+.logo-img{width:80px;}
+.free-badge{font-size:10px;padding:4px 8px;}
+.hero{flex-direction:column;padding:32px 20px 28px;gap:24px;}
+.hero h1{font-size:28px;}
+.hero-img{display:none;}
+.section,.rests,.partner-section{padding:32px 20px;}
+.steps{grid-template-columns:1fr;}
+.partner-grid{grid-template-columns:1fr;}
+footer{grid-template-columns:1fr;gap:24px;padding:32px 20px;}
+.menu-wrap{padding:20px 16px 120px;}
+.food-grid{grid-template-columns:1fr 1fr;}
+.page-hero{flex-direction:column;align-items:flex-start;padding:20px 20px 16px;}
+.cart-bar{padding:12px 16px;}
+}
+</style>
+
+<div class="wrap">
+
+<div id="home" class="page active">
+<nav>
+  <div class="nav-logo">
+    <img src="/mnt/user-data/uploads/newlogo.png" class="logo-img" alt="SuDostava" onerror="this.style.display='none';this.nextSibling.style.display='flex'" />
+    <div style="display:none;align-items:center;gap:8px;">
+      <div style="width:38px;height:38px;background:var(--or);border-radius:10px;display:flex;align-items:center;justify-content:center;"><span style="color:#fff;font-size:18px;font-weight:900;">S</span></div>
+      <div><div style="font-size:18px;font-weight:900;"><span style="color:var(--or);">Su</span>Dostava</div><div style="font-size:9px;color:#888;letter-spacing:1.5px;text-transform:uppercase;">Brza dostava omiljenih jela</div></div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a onclick="openPage('home')">Početna</a>
+    <a onclick="scrollToRests()">Restorani</a>
+    <a onclick="openModal('driver')">Postani vozač</a>
+    <a onclick="openModal('partner')">Partnerstvo</a>
+  </div>
+  <div class="nav-right">
+    <span class="free-badge">✓ Besplatna dostava!</span>
+    <button class="nav-btn" onclick="scrollToRests()">Naruči sada</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="free-delivery-banner">
+      <div class="fdb-icon">🎉</div>
+      <div class="fdb-text">
+        <strong>Dostava je BESPLATNA!</strong>
+        <span>Nema skrivenih troškova — plaćate samo hranu</span>
+      </div>
+    </div>
+    <h1>Omiljeni ukusi,<br>pravo na tvoja <em>vrata</em></h1>
+    <p>Naruči iz najboljih restorana u gradu. Brza dostava, sveža hrana, jednostavno naručivanje — sve na jednom mestu.</p>
+    <div class="search-bar">
+      <input type="text" placeholder="Unesi svoju adresu..." />
+      <button onclick="scrollToRests()">Pronađi</button>
+    </div>
+    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
+      <div class="pay-badge">💵 Plaćanje gotovinom pri dostavi</div>
+      <div class="pay-badge">💳 Kartica kod vozača</div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-visual">
+      <div class="big-icon">🛵</div>
+      <strong>Brza dostava</strong>
+      <p>u tvom gradu — svakog dana</p>
+      <div class="hero-pills">
+        <span class="pill pill-or">⭐ 4.9 ocena</span>
+        <span class="pill pill-gr">✓ Besplatna dostava</span>
+        <span class="pill pill-or">📞 069 081 5197</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Kako funkcioniše?</div>
+  <div class="section-sub">Naruči za 3 laka koraka</div>
+  <div class="steps">
+    <div class="step-card"><div class="step-num">1</div><div class="step-icon ic-or">📍</div><h3>Unesi adresu</h3><p>Upiši adresu dostave i pronađi restorane koji dostavljaju u tvoj kraj.</p></div>
+    <div class="step-card"><div class="step-num">2</div><div class="step-icon ic-gr">🍽️</div><h3>Odaberi jelo</h3><p>Prelistaj menije, odaberi omiljeni obrok i dodaj ga u korpu jednim klikom.</p></div>
+    <div class="step-card"><div class="step-num">3</div><div class="step-icon ic-or">🚀</div><h3>Uživaj u obroku</h3><p>Primi narudžbinu na kućnu adresu — plaćanje gotovinom ili karticom.</p></div>
+  </div>
+</div>
+
+<div class="rests" id="restorani">
+  <div class="section-title">Naši restorani</div>
+  <div class="section-sub">Klikni na restoran i pogledaj meni</div>
+  <div class="rest-grid">
+    <div class="rest-card" onclick="openPage('pingvin')">
+      <div class="rest-img" style="background:#FFF8E1;">🥙</div>
+      <div class="rest-info"><h4>Pingvin Gyros</h4><div class="rest-meta"><span class="rest-rating">★ 4.8</span><span>25–35 min</span><span class="tag">Grčka hrana</span></div></div>
+    </div>
+    <div class="rest-card" onclick="openPage('walter')">
+      <div class="rest-img" style="background:#FCE4EC;">🥩</div>
+      <div class="rest-info"><h4>Walter</h4><div class="rest-meta"><span class="rest-rating">★ 4.7</span><span>30–40 min</span><span class="tag">Roštilj</span></div></div>
+    </div>
+    <div class="rest-card" onclick="openPage('pizzaking')">
+      <div class="rest-img" style="background:#FFF3E0;">🍕</div>
+      <div class="rest-info"><h4>Pizza King</h4><div class="rest-meta"><span class="rest-rating">★ 4.9</span><span>20–30 min</span><span class="tag">Pizza</span></div></div>
+    </div>
+    <div class="rest-card" onclick="openPage('langos')">
+      <div class="rest-img" style="background:#E8F5E9;">🧆</div>
+      <div class="rest-info"><h4>Langos House</h4><div class="rest-meta"><span class="rest-rating">★ 4.6</span><span>15–25 min</span><span class="tag">Brza hrana</span></div></div>
+    </div>
+    <div class="rest-card" onclick="openPage('grillspot')">
+      <div class="rest-img" style="background:#F3E5F5;">🔥</div>
+      <div class="rest-info"><h4>Grill Spot</h4><div class="rest-meta"><span class="rest-rating">★ 4.8</span><span>25–35 min</span><span class="tag">Roštilj</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="partner-section">
+  <div class="section-title">Pridruži nam se</div>
+  <div class="section-sub">Postani deo SuDostava tima</div>
+  <div class="partner-grid">
+    <div class="partner-card rest-p">
+      <div style="font-size:36px;margin-bottom:12px;">🍽️</div>
+      <h3>Postani partner restoran</h3>
+      <p>Povećaj prodaju i dođi do novih mušterija uz našu platformu. Brzo i jednostavno.</p>
+      <button onclick="openModal('partner')">Prijavi restoran →</button>
+    </div>
+    <div class="partner-card drv-p">
+      <div style="font-size:36px;margin-bottom:12px;">🛵</div>
+      <h3>Postani vozač dostavljač</h3>
+      <p>Zarađuj vozeCi uz fleksibilno radno vreme. Prijavi se i počni odmah.</p>
+      <button onclick="openModal('driver')">Postani vozač →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <img src="/mnt/user-data/uploads/newlogo.png" class="footer-logo" alt="SuDostava" onerror="this.outerHTML='<div class=\'footer-brand\'><span>Su</span>Dostava</div>'" />
+    <p>Brza dostava omiljenih jela direktno na tvoja vrata. Dostupno svakog dana.</p>
+    <div class="footer-contact">
+      <p>📞 069 081 5197</p>
+      <p>📧 info@sudostava.online</p>
+      <p>🌐 sudostava.online</p>
+    </div>
+    <div style="margin-top:12px;">
+      <span class="pay-badge">💵 Gotovina pri dostavi</span>
+      <span class="pay-badge">💳 Kartica kod vozača</span>
+    </div>
+  </div>
+  <div>
+    <h4>Restorani</h4>
+    <a onclick="openPage('pingvin')">Pingvin Gyros</a>
+    <a onclick="openPage('walter')">Walter</a>
+    <a onclick="openPage('pizzaking')">Pizza King</a>
+    <a onclick="openPage('langos')">Langos House</a>
+    <a onclick="openPage('grillspot')">Grill Spot</a>
+  </div>
+  <div>
+    <h4>Info</h4>
+    <a>O nama</a>
+    <a onclick="openModal('partner')">Postani partner</a>
+    <a onclick="openModal('driver')">Postani vozač</a>
+    <a>Uslovi korišćenja</a>
+    <a>Privatnost</a>
+  </div>
+</footer>
+</div>
+
+<div id="pingvin" class="page">
+  <div class="page-nav">
+    <div class="page-logo">
+      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
+      <div class="page-logo-info"><h4>Pingvin Gyros</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
+    </div>
+    <button class="back-btn" onclick="openPage('home')">← Nazad</button>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-icon">🥙</div>
+    <div>
+      <h1>Pingvin Gyros</h1>
+      <p>⭐ 4.8 &nbsp;·&nbsp; 25–35 min &nbsp;·&nbsp; Grčka hrana</p>
+      <div class="pay-info">
+        <span class="pay-pill">💵 Gotovina</span>
+        <span class="pay-pill">💳 Kartica kod vozača</span>
+        <span class="pay-pill">🎉 Besplatna dostava</span>
+        <span class="pay-pill">📞 069 081 5197</span>
+      </div>
+    </div>
+  </div>
+  <div class="menu-wrap">
+    <div class="menu-tabs">
+      <button class="mtab active" onclick="switchTab(this,'tab-pingvin-food')">🍽️ Hrana</button>
+      <button class="mtab" onclick="switchTab(this,'tab-pingvin-drinks')">🥤 Pića</button>
+    </div>
+    <div id="tab-pingvin-food">
+      <div class="menu-section-title">Gyros</div>
+      <div class="food-grid">
+        <div class="food-item"><div class="food-photo">🥙</div><div class="food-body"><h4>Pileći gyros</h4><p>Pileće meso, tzatziki, paradajz, luk, pita</p><div class="food-footer"><span class="food-price">480 RSD</span><button class="add-btn" onclick="addToCart(this,'Pileći gyros',480)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥙</div><div class="food-body"><h4>Svinjski gyros</h4><p>Svinjsko meso, tzatziki, zelena salata, pita</p><div class="food-footer"><span class="food-price">520 RSD</span><button class="add-btn" onclick="addToCart(this,'Svinjski gyros',520)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥙</div><div class="food-body"><h4>Mešani gyros</h4><p>Pileće i svinjsko meso, povrće, sos</p><div class="food-footer"><span class="food-price">560 RSD</span><button class="add-btn" onclick="addToCart(this,'Mešani gyros',560)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍽️</div><div class="food-body"><h4>Gyros porcija</h4><p>Serviran sa krompirom i pitom</p><div class="food-footer"><span class="food-price">680 RSD</span><button class="add-btn" onclick="addToCart(this,'Gyros porcija',680)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥗</div><div class="food-body"><h4>Grčka salata</h4><p>Paradajz, krastavac, feta, masline</p><div class="food-footer"><span class="food-price">380 RSD</span><button class="add-btn" onclick="addToCart(this,'Grčka salata',380)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍟</div><div class="food-body"><h4>Pomfrit</h4><p>Hrskav krompir, sos po izboru</p><div class="food-footer"><span class="food-price">220 RSD</span><button class="add-btn" onclick="addToCart(this,'Pomfrit',220)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🫙</div><div class="food-body"><h4>Tzatziki sos</h4><p>Domaći grčki sos sa belim lukom</p><div class="food-footer"><span class="food-price">120 RSD</span><button class="add-btn" onclick="addToCart(this,'Tzatziki sos',120)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🫓</div><div class="food-body"><h4>Pita</h4><p>Domaća tanka pita, sveže pečena</p><div class="food-footer"><span class="food-price">80 RSD</span><button class="add-btn" onclick="addToCart(this,'Pita',80)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥙</div><div class="food-body"><h4>Gyros XXL</h4><p>Dupla porcija mesa, svi dodaci</p><div class="food-footer"><span class="food-price">820 RSD</span><button class="add-btn" onclick="addToCart(this,'Gyros XXL',820)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🫔</div><div class="food-body"><h4>Souvlaki</h4><p>Ražnjić sa povrćem i tzatziki sosom</p><div class="food-footer"><span class="food-price">440 RSD</span><button class="add-btn" onclick="addToCart(this,'Souvlaki',440)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥩</div><div class="food-body"><h4>Meso na tanjiru</h4><p>Mešano meso bez pite, sa salatom</p><div class="food-footer"><span class="food-price">760 RSD</span><button class="add-btn" onclick="addToCart(this,'Meso na tanjiru',760)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍱</div><div class="food-body"><h4>Porodični set</h4><p>2x gyros + 2x pomfrit + 2x pita</p><div class="food-footer"><span class="food-price">1600 RSD</span><button class="add-btn" onclick="addToCart(this,'Porodični set',1600)">+</button></div></div></div>
+      </div>
+    </div>
+    <div id="tab-pingvin-drinks" style="display:none;">
+      <div class="menu-section-title">Pića</div>
+      <div class="drink-grid">
+        <div class="drink-item"><div class="drink-photo">🥤</div><div class="drink-body"><h4>Coca-Cola 0.33l</h4><p>Limenka</p><div class="drink-footer"><span class="food-price">120 RSD</span><button class="add-btn" onclick="addToCart(this,'Coca-Cola',120)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍋</div><div class="drink-body"><h4>Limunadа</h4><p>Domaća, 0.5l</p><div class="drink-footer"><span class="food-price">150 RSD</span><button class="add-btn" onclick="addToCart(this,'Limunadа',150)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">💧</div><div class="drink-body"><h4>Voda 0.5l</h4><p>Prirodna mineralna</p><div class="drink-footer"><span class="food-price">80 RSD</span><button class="add-btn" onclick="addToCart(this,'Voda',80)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍵</div><div class="drink-body"><h4>Čaj</h4><p>Mešani voćni čaj</p><div class="drink-footer"><span class="food-price">100 RSD</span><button class="add-btn" onclick="addToCart(this,'Čaj',100)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🥛</div><div class="drink-body"><h4>Jogurt</h4><p>Domaći, 0.5l</p><div class="drink-footer"><span class="food-price">120 RSD</span><button class="add-btn" onclick="addToCart(this,'Jogurt',120)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍊</div><div class="drink-body"><h4>Sok narandža</h4><p>Prirodan, 0.3l</p><div class="drink-footer"><span class="food-price">140 RSD</span><button class="add-btn" onclick="addToCart(this,'Sok narandža',140)">+</button></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-bar" id="cart-pingvin">
+    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total" id="ct-pingvin"></span></div>
+    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
+  </div>
+</div>
+
+<div id="walter" class="page">
+  <div class="page-nav">
+    <div class="page-logo">
+      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
+      <div class="page-logo-info"><h4>Walter</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
+    </div>
+    <button class="back-btn" onclick="openPage('home')">← Nazad</button>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-icon">🥩</div>
+    <div><h1>Walter</h1><p>⭐ 4.7 &nbsp;·&nbsp; 30–40 min &nbsp;·&nbsp; Roštilj</p>
+    <div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div>
+  </div>
+  <div class="menu-wrap">
+    <div class="menu-tabs">
+      <button class="mtab active" onclick="switchTab(this,'tab-walter-food')">🍽️ Hrana</button>
+      <button class="mtab" onclick="switchTab(this,'tab-walter-drinks')">🥤 Pića</button>
+    </div>
+    <div id="tab-walter-food">
+      <div class="menu-section-title">Roštilj</div>
+      <div class="food-grid">
+        <div class="food-item"><div class="food-photo">🌭</div><div class="food-body"><h4>Ćevapi (10 kom)</h4><p>Domaći ćevapi sa lepinjom i ajvarom</p><div class="food-footer"><span class="food-price">580 RSD</span><button class="add-btn" onclick="addToCart(this,'Ćevapi',580)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍔</div><div class="food-body"><h4>Pljeskavica</h4><p>200g pljeskavica sa prilogom po izboru</p><div class="food-footer"><span class="food-price">620 RSD</span><button class="add-btn" onclick="addToCart(this,'Pljeskavica',620)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥩</div><div class="food-body"><h4>Mešano meso</h4><p>Ćevapi, pljeskavica, roštilj piletina</p><div class="food-footer"><span class="food-price">980 RSD</span><button class="add-btn" onclick="addToCart(this,'Mešano meso',980)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍗</div><div class="food-body"><h4>Roštilj piletina</h4><p>Pileće grudi sa povrćem i prilogom</p><div class="food-footer"><span class="food-price">720 RSD</span><button class="add-btn" onclick="addToCart(this,'Roštilj piletina',720)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥙</div><div class="food-body"><h4>Roštilj sendvič</h4><p>Pljeskavica, salata, ajvar, lepinja</p><div class="food-footer"><span class="food-price">520 RSD</span><button class="add-btn" onclick="addToCart(this,'Roštilj sendvič',520)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🧅</div><div class="food-body"><h4>Vesalica</h4><p>Svinjska vesalica sa prilogom</p><div class="food-footer"><span class="food-price">840 RSD</span><button class="add-btn" onclick="addToCart(this,'Vesalica',840)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍱</div><div class="food-body"><h4>Porodični set</h4><p>Ćevapi + pljeskavica + piletina + lepinja</p><div class="food-footer"><span class="food-price">2200 RSD</span><button class="add-btn" onclick="addToCart(this,'Porodični set',2200)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🫙</div><div class="food-body"><h4>Ajvar</h4><p>Domaći ljuti ajvar</p><div class="food-footer"><span class="food-price">80 RSD</span><button class="add-btn" onclick="addToCart(this,'Ajvar',80)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🫓</div><div class="food-body"><h4>Lepinja</h4><p>Sveže pečena lepinja</p><div class="food-footer"><span class="food-price">60 RSD</span><button class="add-btn" onclick="addToCart(this,'Lepinja',60)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥗</div><div class="food-body"><h4>Srpska salata</h4><p>Paradajz, paprika, krastavac, crni luk</p><div class="food-footer"><span class="food-price">280 RSD</span><button class="add-btn" onclick="addToCart(this,'Srpska salata',280)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍟</div><div class="food-body"><h4>Pomfrit</h4><p>Hrskav krompir</p><div class="food-footer"><span class="food-price">220 RSD</span><button class="add-btn" onclick="addToCart(this,'Pomfrit',220)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🧀</div><div class="food-body"><h4>Sir u kajmaku</h4><p>Domaći beli sir sa kajmakom</p><div class="food-footer"><span class="food-price">320 RSD</span><button class="add-btn" onclick="addToCart(this,'Sir u kajmaku',320)">+</button></div></div></div>
+      </div>
+    </div>
+    <div id="tab-walter-drinks" style="display:none;">
+      <div class="menu-section-title">Pića</div>
+      <div class="drink-grid">
+        <div class="drink-item"><div class="drink-photo">🥤</div><div class="drink-body"><h4>Coca-Cola 0.33l</h4><p>Limenka</p><div class="drink-footer"><span class="food-price">120 RSD</span><button class="add-btn" onclick="addToCart(this,'Coca-Cola',120)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍺</div><div class="drink-body"><h4>Pivo 0.5l</h4><p>Domaće pivo</p><div class="drink-footer"><span class="food-price">180 RSD</span><button class="add-btn" onclick="addToCart(this,'Pivo',180)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">💧</div><div class="drink-body"><h4>Voda 0.5l</h4><p>Prirodna mineralna</p><div class="drink-footer"><span class="food-price">80 RSD</span><button class="add-btn" onclick="addToCart(this,'Voda',80)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍊</div><div class="drink-body"><h4>Sok 0.2l</h4><p>Razni ukusi</p><div class="drink-footer"><span class="food-price">100 RSD</span><button class="add-btn" onclick="addToCart(this,'Sok',100)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🥛</div><div class="drink-body"><h4>Jogurt 0.5l</h4><p>Domaći jogurt</p><div class="drink-footer"><span class="food-price">120 RSD</span><button class="add-btn" onclick="addToCart(this,'Jogurt',120)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🧃</div><div class="drink-body"><h4>Nektar sok</h4><p>0.33l, razni ukusi</p><div class="drink-footer"><span class="food-price">110 RSD</span><button class="add-btn" onclick="addToCart(this,'Nektar sok',110)">+</button></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-bar">
+    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total" id="ct-walter"></span></div>
+    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
+  </div>
+</div>
+
+<div id="pizzaking" class="page">
+  <div class="page-nav">
+    <div class="page-logo">
+      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
+      <div class="page-logo-info"><h4>Pizza King</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
+    </div>
+    <button class="back-btn" onclick="openPage('home')">← Nazad</button>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-icon">🍕</div>
+    <div><h1>Pizza King</h1><p>⭐ 4.9 &nbsp;·&nbsp; 20–30 min &nbsp;·&nbsp; Pizza</p>
+    <div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div>
+  </div>
+  <div class="menu-wrap">
+    <div class="menu-tabs">
+      <button class="mtab active" onclick="switchTab(this,'tab-pizza-food')">🍽️ Hrana</button>
+      <button class="mtab" onclick="switchTab(this,'tab-pizza-drinks')">🥤 Pića</button>
+    </div>
+    <div id="tab-pizza-food">
+      <div class="menu-section-title">Pizze</div>
+      <div class="food-grid">
+        <div class="food-item"><div class="food-photo">🍕</div><div class="food-body"><h4>Margherita</h4><p>Paradajz sos, mocarela, sveži bosiljak</p><div class="food-footer"><span class="food-price">680 RSD</span><button class="add-btn" onclick="addToCart(this,'Margherita',680)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍕</div><div class="food-body"><h4>Capricciosa</h4><p>Šunka, pečurke, mocarela, paradajz</p><div class="food-footer"><span class="food-price">780 RSD</span><button class="add-btn" onclick="addToCart(this,'Capricciosa',780)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍕</div><div class="food-body"><h4>Quattro Formaggi</h4><p>Četiri vrste sira na beloj podlozi</p><div class="food-footer"><span class="food-price">850 RSD</span><button class="add-btn" onclick="addToCart(this,'Quattro Formaggi',850)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍕</div><div class="food-body"><h4>BBQ Chicken</h4><p>Piletina, BBQ sos, paprika, crni luk</p><div class="food-footer"><span class="food-price">880 RSD</span><button class="add-btn" onclick="addToCart(this,'BBQ Chicken',880)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍕</div><div class="food-body"><h4>Pepperoni</h4><p>Ljuta salama, mocarela, paradajz sos</p><div class="food-footer"><span class="food-price">820 RSD</span><button class="add-btn" onclick="addToCart(this,'Pepperoni',820)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍝</div><div class="food-body"><h4>Carbonara pasta</h4><p>Slanina, jaje, parmezan, crni biber</p><div class="food-footer"><span class="food-price">680 RSD</span><button class="add-btn" onclick="addToCart(this,'Carbonara',680)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍝</div><div class="food-body"><h4>Bolognese pasta</h4><p>Mleveno meso, paradajz sos, parmezan</p><div class="food-footer"><span class="food-price">650 RSD</span><button class="add-btn" onclick="addToCart(this,'Bolognese',650)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥗</div><div class="food-body"><h4>Cezar salata</h4><p>Piletina, parmezan, kruton, cezar sos</p><div class="food-footer"><span class="food-price">480 RSD</span><button class="add-btn" onclick="addToCart(this,'Cezar salata',480)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍕</div><div class="food-body"><h4>Hawaii pizza</h4><p>Šunka, ananas, mocarela</p><div class="food-footer"><span class="food-price">800 RSD</span><button class="add-btn" onclick="addToCart(this,'Hawaii pizza',800)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🧄</div><div class="food-body"><h4>Garlic bread</h4><p>Beli hleb sa belim lukom i maslacem</p><div class="food-footer"><span class="food-price">280 RSD</span><button class="add-btn" onclick="addToCart(this,'Garlic bread',280)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍟</div><div class="food-body"><h4>Pomfrit</h4><p>Hrskav krompir sa kečapom</p><div class="food-footer"><span class="food-price">220 RSD</span><button class="add-btn" onclick="addToCart(this,'Pomfrit',220)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍱</div><div class="food-body"><h4>Pizza + pasta set</h4><p>1x Margherita + pasta po izboru</p><div class="food-footer"><span class="food-price">1200 RSD</span><button class="add-btn" onclick="addToCart(this,'Pizza+pasta set',1200)">+</button></div></div></div>
+      </div>
+    </div>
+    <div id="tab-pizza-drinks" style="display:none;">
+      <div class="menu-section-title">Pića</div>
+      <div class="drink-grid">
+        <div class="drink-item"><div class="drink-photo">🥤</div><div class="drink-body"><h4>Coca-Cola 0.5l</h4><p>Flaša</p><div class="drink-footer"><span class="food-price">140 RSD</span><button class="add-btn" onclick="addToCart(this,'Coca-Cola 0.5l',140)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍋</div><div class="drink-body"><h4>Sprite 0.5l</h4><p>Flaša</p><div class="drink-footer"><span class="food-price">140 RSD</span><button class="add-btn" onclick="addToCart(this,'Sprite',140)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">💧</div><div class="drink-body"><h4>Voda 0.5l</h4><p>Prirodna</p><div class="drink-footer"><span class="food-price">80 RSD</span><button class="add-btn" onclick="addToCart(this,'Voda',80)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍊</div><div class="drink-body"><h4>Nektar 0.3l</h4><p>Sok po izboru</p><div class="drink-footer"><span class="food-price">110 RSD</span><button class="add-btn" onclick="addToCart(this,'Nektar',110)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍵</div><div class="drink-body"><h4>Čaj</h4><p>Voćni čaj</p><div class="drink-footer"><span class="food-price">100 RSD</span><button class="add-btn" onclick="addToCart(this,'Čaj',100)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🧃</div><div class="drink-body"><h4>Cedevita</h4><p>0.5l instant napitak</p><div class="drink-footer"><span class="food-price">120 RSD</span><button class="add-btn" onclick="addToCart(this,'Cedevita',120)">+</button></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-bar">
+    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div>
+    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
+  </div>
+</div>
+
+<div id="langos" class="page">
+  <div class="page-nav">
+    <div class="page-logo">
+      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
+      <div class="page-logo-info"><h4>Langos House</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
+    </div>
+    <button class="back-btn" onclick="openPage('home')">← Nazad</button>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-icon">🧆</div>
+    <div><h1>Langos House</h1><p>⭐ 4.6 &nbsp;·&nbsp; 15–25 min &nbsp;·&nbsp; Brza hrana</p>
+    <div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div>
+  </div>
+  <div class="menu-wrap">
+    <div class="menu-tabs">
+      <button class="mtab active" onclick="switchTab(this,'tab-langos-food')">🍽️ Hrana</button>
+      <button class="mtab" onclick="switchTab(this,'tab-langos-drinks')">🥤 Pića</button>
+    </div>
+    <div id="tab-langos-food">
+      <div class="menu-section-title">Langosi</div>
+      <div class="food-grid">
+        <div class="food-item"><div class="food-photo">🥞</div><div class="food-body"><h4>Klasični langos</h4><p>Pavlaka i sir, hrskav</p><div class="food-footer"><span class="food-price">320 RSD</span><button class="add-btn" onclick="addToCart(this,'Klasični langos',320)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥞</div><div class="food-body"><h4>Langos sa šunkom</h4><p>Pavlaka, sir, šunka</p><div class="food-footer"><span class="food-price">380 RSD</span><button class="add-btn" onclick="addToCart(this,'Langos šunka',380)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍫</div><div class="food-body"><h4>Langos sa nutellom</h4><p>Nutella i šećer u prahu</p><div class="food-footer"><span class="food-price">350 RSD</span><button class="add-btn" onclick="addToCart(this,'Langos nutella',350)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥞</div><div class="food-body"><h4>Langos XXL</h4><p>Dupla porcija, punjenje po izboru</p><div class="food-footer"><span class="food-price">580 RSD</span><button class="add-btn" onclick="addToCart(this,'Langos XXL',580)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥞</div><div class="food-body"><h4>Langos sa ajvarom</h4><p>Ajvar, pavlaka, sir, beli luk</p><div class="food-footer"><span class="food-price">400 RSD</span><button class="add-btn" onclick="addToCart(this,'Langos ajvar',400)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥞</div><div class="food-body"><h4>Langos sa jajima</h4><p>Kajgana, sir, pavlaka</p><div class="food-footer"><span class="food-price">420 RSD</span><button class="add-btn" onclick="addToCart(this,'Langos jaja',420)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥞</div><div class="food-body"><h4>Veggie langos</h4><p>Paprika, paradajz, sir, povrće</p><div class="food-footer"><span class="food-price">360 RSD</span><button class="add-btn" onclick="addToCart(this,'Veggie langos',360)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍓</div><div class="food-body"><h4>Slatki langos</h4><p>Džem, šlag i šećer u prahu</p><div class="food-footer"><span class="food-price">340 RSD</span><button class="add-btn" onclick="addToCart(this,'Slatki langos',340)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥞</div><div class="food-body"><h4>Langos BBQ</h4><p>BBQ sos, piletina, pavlaka</p><div class="food-footer"><span class="food-price">440 RSD</span><button class="add-btn" onclick="addToCart(this,'Langos BBQ',440)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍟</div><div class="food-body"><h4>Pomfrit</h4><p>Hrskav krompir</p><div class="food-footer"><span class="food-price">220 RSD</span><button class="add-btn" onclick="addToCart(this,'Pomfrit',220)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥗</div><div class="food-body"><h4>Salata</h4><p>Mešana sezonska salata</p><div class="food-footer"><span class="food-price">200 RSD</span><button class="add-btn" onclick="addToCart(this,'Salata',200)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍱</div><div class="food-body"><h4>Porodični set</h4><p>4x langos po izboru</p><div class="food-footer"><span class="food-price">1400 RSD</span><button class="add-btn" onclick="addToCart(this,'Porodični set',1400)">+</button></div></div></div>
+      </div>
+    </div>
+    <div id="tab-langos-drinks" style="display:none;">
+      <div class="menu-section-title">Pića</div>
+      <div class="drink-grid">
+        <div class="drink-item"><div class="drink-photo">🥤</div><div class="drink-body"><h4>Coca-Cola 0.33l</h4><p>Limenka</p><div class="drink-footer"><span class="food-price">120 RSD</span><button class="add-btn" onclick="addToCart(this,'Coca-Cola',120)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">💧</div><div class="drink-body"><h4>Voda 0.5l</h4><p>Mineralna</p><div class="drink-footer"><span class="food-price">80 RSD</span><button class="add-btn" onclick="addToCart(this,'Voda',80)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍋</div><div class="drink-body"><h4>Limunadа</h4><p>Domaća, 0.5l</p><div class="drink-footer"><span class="food-price">150 RSD</span><button class="add-btn" onclick="addToCart(this,'Limunadа',150)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🧃</div><div class="drink-body"><h4>Sok 0.2l</h4><p>Razni ukusi</p><div class="drink-footer"><span class="food-price">100 RSD</span><button class="add-btn" onclick="addToCart(this,'Sok',100)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🥛</div><div class="drink-body"><h4>Jogurt 0.5l</h4><p>Domaći</p><div class="drink-footer"><span class="food-price">120 RSD</span><button class="add-btn" onclick="addToCart(this,'Jogurt',120)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍵</div><div class="drink-body"><h4>Čaj</h4><p>Voćni ili biljni</p><div class="drink-footer"><span class="food-price">100 RSD</span><button class="add-btn" onclick="addToCart(this,'Čaj',100)">+</button></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-bar">
+    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div>
+    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
+  </div>
+</div>
+
+<div id="grillspot" class="page">
+  <div class="page-nav">
+    <div class="page-logo">
+      <img src="/mnt/user-data/uploads/newlogo.png" class="page-logo-img" alt="SuDostava" onerror="this.style.display='none'" />
+      <div class="page-logo-info"><h4>Grill Spot</h4><p>Brza dostava omiljenih jela · sudostava.online</p></div>
+    </div>
+    <button class="back-btn" onclick="openPage('home')">← Nazad</button>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-icon">🔥</div>
+    <div><h1>Grill Spot</h1><p>⭐ 4.8 &nbsp;·&nbsp; 25–35 min &nbsp;·&nbsp; Roštilj</p>
+    <div class="pay-info"><span class="pay-pill">💵 Gotovina</span><span class="pay-pill">💳 Kartica kod vozača</span><span class="pay-pill">🎉 Besplatna dostava</span><span class="pay-pill">📞 069 081 5197</span></div></div>
+  </div>
+  <div class="menu-wrap">
+    <div class="menu-tabs">
+      <button class="mtab active" onclick="switchTab(this,'tab-grill-food')">🍽️ Hrana</button>
+      <button class="mtab" onclick="switchTab(this,'tab-grill-drinks')">🥤 Pića</button>
+    </div>
+    <div id="tab-grill-food">
+      <div class="menu-section-title">Burgeri & Roštilj</div>
+      <div class="food-grid">
+        <div class="food-item"><div class="food-photo">🍔</div><div class="food-body"><h4>Burger klasik</h4><p>Juneće meso, sir, salata, paradajz</p><div class="food-footer"><span class="food-price">720 RSD</span><button class="add-btn" onclick="addToCart(this,'Burger klasik',720)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍔</div><div class="food-body"><h4>Double Smash</h4><p>Dupla pljeskavica, bacon, sos</p><div class="food-footer"><span class="food-price">920 RSD</span><button class="add-btn" onclick="addToCart(this,'Double Smash',920)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥙</div><div class="food-body"><h4>Grill sendvič</h4><p>Piletina, povrće, sos po izboru</p><div class="food-footer"><span class="food-price">580 RSD</span><button class="add-btn" onclick="addToCart(this,'Grill sendvič',580)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍗</div><div class="food-body"><h4>Krila (10 kom)</h4><p>Hrskava piletina, dip sos</p><div class="food-footer"><span class="food-price">680 RSD</span><button class="add-btn" onclick="addToCart(this,'Krila 10 kom',680)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍔</div><div class="food-body"><h4>Chicken burger</h4><p>Pileće meso, salata, majonez</p><div class="food-footer"><span class="food-price">680 RSD</span><button class="add-btn" onclick="addToCart(this,'Chicken burger',680)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍔</div><div class="food-body"><h4>Veggie burger</h4><p>Biljni odrezak, povrće, sos</p><div class="food-footer"><span class="food-price">640 RSD</span><button class="add-btn" onclick="addToCart(this,'Veggie burger',640)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥩</div><div class="food-body"><h4>Grill tanjir</h4><p>Mešano roštilj meso sa prilogom</p><div class="food-footer"><span class="food-price">1100 RSD</span><button class="add-btn" onclick="addToCart(this,'Grill tanjir',1100)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍟</div><div class="food-body"><h4>Pomfrit</h4><p>Hrskav krompir</p><div class="food-footer"><span class="food-price">220 RSD</span><button class="add-btn" onclick="addToCart(this,'Pomfrit',220)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🧅</div><div class="food-body"><h4>Onion rings</h4><p>Hrskavi kolutovi luka, sos</p><div class="food-footer"><span class="food-price">260 RSD</span><button class="add-btn" onclick="addToCart(this,'Onion rings',260)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🥗</div><div class="food-body"><h4>Coleslaw</h4><p>Domaća salata od kupusa</p><div class="food-footer"><span class="food-price">180 RSD</span><button class="add-btn" onclick="addToCart(this,'Coleslaw',180)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🍱</div><div class="food-body"><h4>Family deal</h4><p>2x burger + krila + 2x pomfrit</p><div class="food-footer"><span class="food-price">2400 RSD</span><button class="add-btn" onclick="addToCart(this,'Family deal',2400)">+</button></div></div></div>
+        <div class="food-item"><div class="food-photo">🌶️</div><div class="food-body"><h4>Ljuti sos</h4><p>Domaći chili sos, 50ml</p><div class="food-footer"><span class="food-price">80 RSD</span><button class="add-btn" onclick="addToCart(this,'Ljuti sos',80)">+</button></div></div></div>
+      </div>
+    </div>
+    <div id="tab-grill-drinks" style="display:none;">
+      <div class="menu-section-title">Pića</div>
+      <div class="drink-grid">
+        <div class="drink-item"><div class="drink-photo">🥤</div><div class="drink-body"><h4>Coca-Cola 0.5l</h4><p>Flaša</p><div class="drink-footer"><span class="food-price">140 RSD</span><button class="add-btn" onclick="addToCart(this,'Coca-Cola',140)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍺</div><div class="drink-body"><h4>Pivo 0.5l</h4><p>Domaće točeno</p><div class="drink-footer"><span class="food-price">200 RSD</span><button class="add-btn" onclick="addToCart(this,'Pivo',200)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">💧</div><div class="drink-body"><h4>Voda 0.5l</h4><p>Mineralna</p><div class="drink-footer"><span class="food-price">80 RSD</span><button class="add-btn" onclick="addToCart(this,'Voda',80)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🍋</div><div class="drink-body"><h4>Lemonade</h4><p>Domaća, 0.5l</p><div class="drink-footer"><span class="food-price">160 RSD</span><button class="add-btn" onclick="addToCart(this,'Lemonade',160)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🧃</div><div class="drink-body"><h4>Sok 0.33l</h4><p>Razni ukusi</p><div class="drink-footer"><span class="food-price">110 RSD</span><button class="add-btn" onclick="addToCart(this,'Sok',110)">+</button></div></div></div>
+        <div class="drink-item"><div class="drink-photo">🥛</div><div class="drink-body"><h4>Milkshake</h4><p>Čokolada, vanila ili jagoda</p><div class="drink-footer"><span class="food-price">280 RSD</span><button class="add-btn" onclick="addToCart(this,'Milkshake',280)">+</button></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-bar">
+    <div class="cart-info"><span class="cart-items">Korpa je prazna</span><span class="cart-total"></span></div>
+    <button class="cart-order-btn" onclick="openModal('order')">Naruči 🛵</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-partner">
+  <div class="modal">
+    <h2>🍽️ Prijavi restoran</h2>
+    <p>Povećaj prodaju i dođi do novih mušterija. Popuni formu i kontaktiraćemo te u roku od 24h.</p>
+    <input type="text" placeholder="Naziv restorana" />
+    <input type="text" placeholder="Kontakt ime i prezime" />
+    <input type="tel" placeholder="Telefon" />
+    <input type="email" placeholder="Email adresa" />
+    <textarea placeholder="Kratki opis restorana..." rows="3" style="resize:none;"></textarea>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal('partner')">Otkaži</button>
+      <button class="modal-submit">Pošalji prijavu ✓</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-driver">
+  <div class="modal">
+    <h2>🛵 Postani vozač</h2>
+    <p>Zarađuj uz fleksibilno radno vreme. Sve što trebaš je skuter ili bicikl i telefon. Prijavi se odmah!</p>
+    <input type="text" placeholder="Ime i prezime" />
+    <input type="tel" placeholder="Telefon" />
+    <input type="text" placeholder="Grad" />
+    <select><option>Izaberi vozilo</option><option>Skuter/Motor</option><option>Bicikl</option><option>Auto</option></select>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal('driver')">Otkaži</button>
+      <button class="modal-submit">Prijavi se ✓</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-order">
+  <div class="modal">
+    <h2>🛵 Potvrdi narudžbinu</h2>
+    <p>Upiši adresu dostave. Plaćanje gotovinom ili karticom pri dostavi.</p>
+    <input type="text" placeholder="Ime i prezime" />
+    <input type="tel" placeholder="Telefon: 069 081 5197" />
+    <input type="text" placeholder="Adresa dostave" />
+    <select><option>💵 Gotovina pri dostavi</option><option>💳 Kartica kod vozača</option></select>
+    <textarea placeholder="Napomena za dostavljača..." rows="2" style="resize:none;"></textarea>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal('order')">Otkaži</button>
+      <button class="modal-submit" onclick="closeModal('order')">Naruči sada 🎉</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+var cart={items:0,total:0};
+function openPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  var pg=document.getElementById(id);
+  if(pg){pg.classList.add('active');window.scrollTo(0,0);}
+  cart={items:0,total:0};
+}
+function scrollToRests(){
+  openPage('home');
+  setTimeout(function(){var el=document.getElementById('restorani');if(el)el.scrollIntoView({behavior:'smooth'});},100);
+}
+function switchTab(btn,tabId){
+  var wrap=btn.closest('.menu-wrap');
+  wrap.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  var pg=btn.closest('.page');
+  pg.querySelectorAll('[id^="tab-"]').forEach(t=>t.style.display='none');
+  var t=document.getElementById(tabId);
+  if(t)t.style.display='block';
+}
+function addToCart(btn,name,price){
+  cart.items++;
+  cart.total+=price;
+  var pg=btn.closest('.page');
+  var ci=pg.querySelector('.cart-items');
+  var ct=pg.querySelector('.cart-total');
+  if(ci)ci.textContent=cart.items+(cart.items===1?' stavka':' stavki')+' u korpi';
+  if(ct)ct.textContent='Ukupno: '+cart.total.toLocaleString()+' RSD';
+  btn.classList.add('added');
+  btn.textContent='✓';
+  setTimeout(function(){btn.classList.remove('added');btn.textContent='+';},900);
+}
+function openModal(type){
+  var m=document.getElementById('modal-'+type);
+  if(m)m.classList.add('open');
+}
+function closeModal(type){
+  var m=document.getElementById('modal-'+type);
+  if(m)m.classList.remove('open');
+}
+document.querySelectorAll('.modal-overlay').forEach(function(m){
+  m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('open');});
+});
+</script>
